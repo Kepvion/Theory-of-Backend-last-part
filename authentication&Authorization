@@ -1,0 +1,30 @@
+authentication and authorization
+                          INSTALL THESE PACKAGES
+                                 npm i passport passport-local passport-local-mongoose mongoose express-session 
+
+
+                          WRITE app.js code first in app.js file and write it after view engine and before logger
+
+////here we are allowing server for session (server apne pass data save kar payega)
+
+                               app.use(expressSession({
+                                resave: false,
+                                saveUninitialized:false,
+                                secret: "Pri is here today 11-10-2026 at 23:33"
+                                }));
+
+
+                          app.use(passport.initialize()); 
+                          app.use(passport.session()); //passport apne session save hoga 
+                          passport.serializeUser(usersRouter.serializeUser());
+                          passport.deserializeUser(usersRouter.deserializeUser());
+                          app.use(flash());
+
+                          
+
+
+                          setup user.js then properly
+
+                          
+
+                          in index.js try register first and then other codes as well 

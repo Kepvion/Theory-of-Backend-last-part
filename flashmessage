@@ -1,0 +1,50 @@
+jab bhi aap ejs page ko dekhenge waha par aapko kisi prakar ka koi information dena hai , wo hai flash message ,they are more like good looking alerts,warning and description
+
+
+1)install a package called :  
+                          connect-flash
+
+                        npm i connect flash
+
+
+2)  Make sure you set up expres-sessions
+npm i express-session
+
+include expresss session in app.js 
+                                      const expressSession= require("express-session");
+
+ab view engine ke baad logger ke pehle write 
+                                            
+app.use(expressSession({
+  resave: false,
+  saveUninitialized:false,
+
+  secret: "Pri is here today 11-10-2026 at 23:33"
+}));
+
+
+3)make sure you put connect flash in a app.use function
+express-session ke baad
+
+pehle require karo :   const flash = require("connect-flash");
+                      app.use(flash());
+
+
+
+4) kisi bhi route mein aap ko flash create karna hai 
+
+5) aur phir kisi bhi dusre route par app use chalane kar try karna hai
+
+APP CONNECT FLASH KO USE NHI KAR SAKTE WITHOUT EXPRESS SESSION
+
+
+ham log chahte hai ki jab ham kisi route par jaye jaise ki /failed us route pr ek flash message bane aur wo flash messsage hum logo ko /route par dikhe ejs mein
+
+flash message ka matlab server ke kisi route mein koi data banana and us data ko dusre route mein use kar pana
+
+ //agar login hojaaye to login page ke baad profile page dikhaado
+ //agar na hot to fir,mujhe is route se kisi aur route pr lejao jaise ki /error and waha par dikhao failed
+ //flash message aapko allow karte hai ki aap is route mein bane hue data ko dusre route mein use kar sako
+router.get('/failed', function(req, res) {
+  req.flash("naam",data);
+});
